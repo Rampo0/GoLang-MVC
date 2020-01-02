@@ -1,1 +1,3 @@
 *.rb linguist-language=Go
+* linguist-vendored
+*.js linguist-vendored=false
