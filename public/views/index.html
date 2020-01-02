@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Go Lang</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/index.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
+
+</head>
+<body>
+  
+    <div class="container-fluid" style="margin-top: 30px;">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+
+                {{template "message"}}
+
+                {{if (ne .user.ID 0)}}
+                    <h1>Hello {{.user.Username}}</h1>
+                    <a href="/user/logout" class="btn btn-warning" style="margin-bottom: 10px;">
+                        Logout
+                    </a>
+                {{else}}
+                {{end}}
+
+                <div class="card">
+                    <div class="card-header">CREATE POST</div>
+    
+                    <div class="card-body">
+                        <form method="POST" action="/post/create" enctype="multipart/form-data">
+    
+                            <div class="form-group row">
+                                <label for="title" class="col-sm-4 col-form-label text-md-right">Title</label>
+    
+                                <div class="col-md-6">
+                                    <input id="title" type="title" class="form-control" name="title" required autofocus>
+    
+                                </div>
+                            </div>
+    
+                            <div class="form-group row">
+                                <label for="content" class="col-md-4 col-form-label text-md-right">Content</label>
+    
+                                <div class="col-md-6">
+                                    <input id="content" type="content" class="form-control" name="content" required/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="content" class="col-md-4 text-md-right">Image</label>
+    
+                                <div class="col-md-6">
+                                    <input type="file" name="image">
+                                </div>
+                            </div>
+    
+    
+                            <div class="form-group row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Submit
+                                    </button>
+    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center list-card">
+            <div class="col-md-8">
+             
+                {{ if .posts }} 
+                    {{range .posts}}
+                    <div class="row shadow bg-white rounded row-style">
+                        <div class="col-md-3 align-self-center">
+                            <img class="img-list" src="/media/{{.Image}}" alt="show">
+                        </div>
+                        <div class="col-md-3 align-self-center">
+                            <h4>{{.Title}}</h4>
+                        </div>
+
+                        <div class="col-md-2 align-self-center">
+                            <h6>{{.Created_at}}</h6>
+                        </div>
+                        
+                        <div class="col-md-2 align-self-center">
+                            <a class="btn btn-info" href="/post/edit/{{.ID}}">Edit</a>
+                        </div>
+                            
+                        <div class="col-md-2 align-self-center">
+                            <a class="btn btn-danger" href="/post/delete/{{.ID}}">Delete</a>
+                        </div>
+                    </div>
+                    {{end}} 
+                {{else}}
+
+                <h1>No Post</h1>
+
+                {{end}}
+         
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

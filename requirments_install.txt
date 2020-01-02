@@ -1,0 +1,4 @@
+go get github.com/gorilla/sessions
+go get -u github.com/labstack/echo/...
+go get -u github.com/go-sql-driver/mysql
+go get github.com/joho/godotenv

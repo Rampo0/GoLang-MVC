@@ -1,0 +1,58 @@
+.main{
+    padding: 30px;
+}
+
+.title h1{
+    color: black;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+}
+
+.row-style{
+    background: white;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.img-list{
+    width: calc(100px + (150 - 100) * ((100vw - 300px) / (1600 - 300)));;
+}
+
+.row-title{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.row-title h2{
+    color: #125d91;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+}
+
+.row-style h6 ,h4{
+    color: #125d91;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+}
+.list-card{
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+    .row-title{
+        display: none; 
+    }
+
+    .row-style{
+        text-align: center;
+    }
+
+    .row-style a{
+        margin-bottom: 5px;
+    }
+
+    .img-list{
+        width: 100%;
+        height: auto;
+    }
+}
