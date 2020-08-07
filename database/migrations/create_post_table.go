@@ -8,7 +8,7 @@ import (
 func Post() {
 
 	db := database.Connect()
-	tableName := "Posts"
+	tableName := "posts"
 	// drop if exists
 	qcheck := "DROP TABLE IF EXISTS %s"
 	ExecQuery(db, fmt.Sprintf(qcheck, tableName))

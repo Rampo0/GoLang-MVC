@@ -8,7 +8,7 @@ import (
 
 func Connect() (db *sql.DB) {
 
-	db, err := sql.Open(config().Driver, config().User+":"+config().Pass+"@/"+config().Name)
+	db, err := sql.Open(config().Driver, config().User+":"+config().Pass+"@tcp(" + config().Host + ")" + "/"+config().Name)
 
 	if err != nil {
 		panic(err.Error())

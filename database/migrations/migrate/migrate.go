@@ -17,5 +17,5 @@ func main() {
 	}
 
 	migrations.Post()
-	// migrations.User()
+	migrations.User()
 }

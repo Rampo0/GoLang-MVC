@@ -9,6 +9,7 @@ type dbconf struct {
 	User   string
 	Pass   string
 	Name   string
+	Host   string
 }
 
 func config() dbconf {
@@ -18,6 +19,7 @@ func config() dbconf {
 		User:   os.Getenv("DB_USERNAME"),
 		Pass:   os.Getenv("DB_PASSWORD"),
 		Name:   os.Getenv("DB_DATABASE"),
+		Host:   os.Getenv("DB_HOST"),
 	}
 
 	return _db

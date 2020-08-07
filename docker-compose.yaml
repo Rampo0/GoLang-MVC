@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: go_framework_mariadb
+    restart: on-failure
+    volumes:
+      - ./infra/mariadb/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ilovedocker
+    networks:
+      - gonet
+
+  app:
+    build: 
+      context: .
+    volumes: 
+      - ./:/go/src/go_framework
+    image: goframework
+    container_name: go_framework
+    restart: on-failure
+    ports:
+      - 4000:8000
+    networks: 
+      - gonet
+
+  adminer:
+    image: adminer
+    container_name: go_framework_adminer
+    ports: 
+      - "4001:8080"
+    networks: 
+      - gonet
+
+
+networks:
+  gonet:
+    driver: bridge
